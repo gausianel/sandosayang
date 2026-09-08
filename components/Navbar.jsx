@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,11 +42,8 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // Fungsi untuk memaksa reload halaman penuh saat "Beranda" diklik
   const handleBerandaClick = (e) => {
-    e.preventDefault();
-    window.location.href = '/#home';
-    window.location.reload();
+    setIsOpen(false);
   };
 
   return (
@@ -57,7 +55,7 @@ export default function Navbar() {
       }`}>
         
         {/* Logo */}
-        <a href="/#home" onClick={handleBerandaClick} className="flex items-center">
+        <Link href="/#home" onClick={handleBerandaClick} className="flex items-center">
           <Image 
             src="/Logo Sando Sayang.jpg" 
             alt="Sando Sayang Logo" 
@@ -67,16 +65,15 @@ export default function Navbar() {
               scrolled ? 'scale-50 -my-6' : 'scale-100'
             }`}
           />
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 font-medium text-sm text-neutral-600">
-          <a href="/#home" onClick={handleBerandaClick} aria-current={activeId === 'home' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'home' ? 'text-[#FD6C69] font-semibold' : ''}`}>Beranda</a>
-          <a href="#story" aria-current={activeId === 'story' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'story' ? 'text-[#FD6C69] font-semibold' : ''}`}>Tentang</a>
-          {/* Terhubung langsung ke id="why" */}
-          <a href="#why" aria-current={activeId === 'why' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'why' ? 'text-[#FD6C69] font-semibold' : ''}`}>Keunggulan</a>
-          <a href="#product" aria-current={activeId === 'product' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'product' ? 'text-[#FD6C69] font-semibold' : ''}`}>Produk</a>
-          <a href="#order" aria-current={activeId === 'order' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'order' ? 'text-[#FD6C69] font-semibold' : ''}`}>Pesan & Kontak</a>
+          <Link href="/#home" onClick={handleBerandaClick} aria-current={activeId === 'home' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'home' ? 'text-[#FD6C69] font-semibold' : ''}`}>Beranda</Link>
+          <Link href="#story" aria-current={activeId === 'story' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'story' ? 'text-[#FD6C69] font-semibold' : ''}`}>Tentang</Link>
+          <Link href="#why" aria-current={activeId === 'why' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'why' ? 'text-[#FD6C69] font-semibold' : ''}`}>Keunggulan</Link>
+          <Link href="#product" aria-current={activeId === 'product' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'product' ? 'text-[#FD6C69] font-semibold' : ''}`}>Produk</Link>
+          <Link href="#order" aria-current={activeId === 'order' ? 'true' : undefined} className={`hover:text-neutral-950 transition-colors ${activeId === 'order' ? 'text-[#FD6C69] font-semibold' : ''}`}>Pesan & Kontak</Link>
         </div>
 
         {/* CTA Button */}
@@ -95,14 +92,14 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-neutral-100 py-5 px-6 shadow-lg flex flex-col gap-4 font-medium text-neutral-700">
-          <a href="/#home" onClick={handleBerandaClick} className={`hover:text-amber-500 ${activeId === 'home' ? 'text-[#FD6C69] font-semibold' : ''}`}>Beranda</a>
-          <a href="#story" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'story' ? 'text-[#FD6C69] font-semibold' : ''}`}>Tentang</a>
-          <a href="#why" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'why' ? 'text-[#FD6C69] font-semibold' : ''}`}>Keunggulan</a>
-          <a href="#product" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'product' ? 'text-[#FD6C69] font-semibold' : ''}`}>Produk</a>
-          <a href="#order" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'order' ? 'text-[#FD6C69] font-semibold' : ''}`}>Pesan & Kontak</a>
-          <a href="#order" onClick={() => setIsOpen(false)} className="bg-[#FD6C69] text-white text-center py-2.5 rounded-full font-semibold">
+          <Link href="/#home" onClick={handleBerandaClick} className={`hover:text-amber-500 ${activeId === 'home' ? 'text-[#FD6C69] font-semibold' : ''}`}>Beranda</Link>
+          <Link href="#story" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'story' ? 'text-[#FD6C69] font-semibold' : ''}`}>Tentang</Link>
+          <Link href="#why" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'why' ? 'text-[#FD6C69] font-semibold' : ''}`}>Keunggulan</Link>
+          <Link href="#product" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'product' ? 'text-[#FD6C69] font-semibold' : ''}`}>Produk</Link>
+          <Link href="#order" onClick={() => setIsOpen(false)} className={`hover:text-amber-500 ${activeId === 'order' ? 'text-[#FD6C69] font-semibold' : ''}`}>Pesan & Kontak</Link>
+          <Link href="#order" onClick={() => setIsOpen(false)} className="bg-[#FD6C69] text-white text-center py-2.5 rounded-full font-semibold">
             Pesan Sekarang
-          </a>
+          </Link>
         </div>
       )}
     </nav>

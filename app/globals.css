@@ -29,14 +29,27 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Section reveal animation — hanya opacity, tidak ada transform,
-   supaya tidak ada "loncatan" posisi setelah anchor-scroll berhenti */
+/* Reveal sections as they enter the viewport. */
 .section-reveal {
-  opacity: 1; /* sementara di-set 1 dulu buat tes */
-  transition: opacity 480ms cubic-bezier(.22,.9,.32,1);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 650ms cubic-bezier(.22,.9,.32,1), transform 650ms cubic-bezier(.22,.9,.32,1);
 }
 .section-reveal.is-visible {
   opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Optional: active navbar link focus style (used via inline class on links) */

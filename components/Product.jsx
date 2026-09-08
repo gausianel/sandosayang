@@ -6,44 +6,68 @@ export default function Product() {
   const products = [
     {
       id: 1,
-      name: "Sando Bundling ",
+      name: "Sando Bundling 1",
       category: "Bundle",
-      price: "Rp 12.000",
-      desc: "Paket bundling hemat sudah dapat roti dengan pilihan rasa dan infused water yang menambahk selera.",
-      badge: "Best Seller 🔥",
-      image: "/products/choco-lover-sando.jpg",
+      price: "Rp 16.500",
+      desc: "Paket bundling hemat sudah dapat roti dengan pilihan rasa beef dan eeg serta infused water yang menambah selera.",
+      badge: "Makanan & Minuman",
+      image: "/products/choco-lover-sando.jpeg",
     },
     {
       id: 2,
-      name: "Sando Sayang",
-      category: "Sweet Series",
-      price: "Rp 14.000",
-      desc: "Sensasi sando home made dengan berbagai rasa yang dapat dipilih sesuai selera.",
-      badge: "Favorite 🍵",
+      name: "Sando Bundling 2",
+      category: "Bundle",
+      price: "Rp 18.000",
+      desc: "Paket bundling Sando Crab Stick dengan infused water  untuk temani hari.",
+      badge: "Makanan & Minuman",
       image: "/products/matcha-cream-sando.jpg",
     },
-  
     {
       id: 3,
-      name: "Infused Water",
+      name: "Sando Crab Stick",
       category: "Single",
       price: "Rp 15.000",
+      desc: "Roti sando gurih dengan isian crab stick pilihan yang lezat dan nagih serta citarasa yang nikmat.",
+      badge: "Makanan",
+      image: "/crab.jpeg", // Diubah dari /public/crab.jpg menjadi /crab.jpg (pastikan file crab.jpg ada di dalam folder public)
+    },
+    {
+      id: 4,
+      name: "Sando Egg",
+      category: "Single",
+      price: "Rp 12.500",
+      desc: "Roti sando lembut dengan isian telur gurih yang nikmat dan mengenyangkan dilengkapi dengan saos mayo.",
+      badge: "Makanan",
+      image: "/egg.jpeg", // Diubah dari /public/egg.jpg menjadi /egg.jpg
+    },
+    {
+      id: 5,
+      name: "Sando Beef",
+      category: "Single",
+      price: "Rp 12.500",
+      desc: "Roti sando spesial dengan irisan daging sapi empuk dan saus lezat di dalamnya.",
+      badge: "Makanan",
+      image: "/crab.jpeg", // Sesuaikan dengan nama file gambar beef kamu nanti (misal: /beef.jpg)
+    },
+    {
+      id: 6,
+      name: "Infused Water",
+      category: "Single",
+      price: "Rp 5.000",
       desc: "Minuman dengan lemon dan mint yang segar dan sehat siap menemani harimu!",
-      badge: "Minuman",
-      image: "/products/infused-water.jpg",
+      badge: "Minumann", 
+      image: "/infusedwater.jpeg",
     },
   ];
 
   const [startIndex, setStartIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const cardsPerView = 3; // jumlah card yang tampil sekaligus di desktop
+  const cardsPerView = 3;
 
   const showCarouselControls = products.length > cardsPerView;
   const maxIndex = products.length - cardsPerView;
 
   const canGoPrev = startIndex > 0;
-  const canGoNext = startIndex < maxIndex;
-
   const goPrev = () => {
     setStartIndex((prev) => (prev > 0 ? prev - 1 : prev));
   };
@@ -56,21 +80,20 @@ export default function Product() {
     if (!showCarouselControls || isPaused) return;
 
     const interval = setInterval(() => {
-      goNext();
+      setStartIndex((prev) => (prev < maxIndex ? prev + 1 : 0));
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [isPaused, startIndex, showCarouselControls]);
+  }, [isPaused, maxIndex, showCarouselControls]);
 
   const visibleProducts = products.slice(startIndex, startIndex + cardsPerView);
 
   return (
-    <section id="product" className="pt-32 pb-20 md:pt-40 md:pb-28 px-6 md:px-12 bg-neutral-50 section-reveal scroll-mt-16">
+    <section id="product" className="pt-16 pb-20 md:pt-20 md:pb-28 px-6 md:px-12 bg-neutral-50 section-reveal scroll-mt-16">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 flex flex-col items-center gap-4">
-          
+        <div className="text-center max-w-2xl mx-auto mb-10 flex flex-col items-center gap-4">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-neutral-900">
             Sando Favorit Mahasiswa
           </h2>
@@ -108,7 +131,7 @@ export default function Product() {
                 className="bg-neutral-50 border border-neutral-100 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 <div>
-                  {/* Visual Thumbnail — Foto Produk Asli */}
+                  {/* Visual Thumbnail */}
                   <div className="w-full h-52 bg-amber-200/50 rounded-2xl relative mb-6 border border-amber-300/30 overflow-hidden">
                     <span className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-sm text-neutral-800 text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
                       {item.badge}
@@ -161,7 +184,7 @@ export default function Product() {
             </button>
           )}
 
-          {/* Dots Indicator (khusus mobile) */}
+          {/* Dots Indicator untuk Mobile */}
           {showCarouselControls && (
             <div className="flex md:hidden items-center justify-center gap-2 mt-8">
               {products.map((_, index) => (

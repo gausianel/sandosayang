@@ -3,13 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // Animasi jalan begitu halaman pertama kali dimuat
-    setIsVisible(true);
-
     // Animasi jalan lagi setiap section ini masuk ke layar (misal habis diklik dari navbar / scroll balik)
     const observer = new IntersectionObserver(
       ([entry]) => {
