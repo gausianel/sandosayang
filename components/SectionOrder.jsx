@@ -16,7 +16,7 @@ export default function OrderSection() {
           {/* WhatsApp */}
           <div className="flex flex-col items-center gap-3">
             <a 
-              href="https://wa.me/6281234567890?text=Halo%20Sando%20Sayang,%20saya%20mau%20pesan%20sando%20dong!" 
+              href="https://wa.me/6285190998495?text=Halo%20Sando%20Sayang,%20saya%20mau%20pesan%20sando%20dong!" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center justify-center w-16 h-16 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full transition-all duration-300 hover:scale-110 active:scale-95 shadow-md hover:shadow-emerald-500/25 hover:shadow-xl"
