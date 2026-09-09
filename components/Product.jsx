@@ -4,26 +4,9 @@ import Image from 'next/image';
 
 export default function Product() {
   const products = [
+   
     {
       id: 1,
-      name: "Sando Bundling 1",
-      category: "Bundle",
-      price: "Rp 16.500",
-      desc: "Paket bundling hemat sudah dapat roti dengan pilihan rasa beef dan eeg serta infused water yang menambah selera.",
-      badge: "Makanan & Minuman",
-      image: "/products/choco-lover-sando.jpeg",
-    },
-    {
-      id: 2,
-      name: "Sando Bundling 2",
-      category: "Bundle",
-      price: "Rp 18.000",
-      desc: "Paket bundling Sando Crab Stick dengan infused water  untuk temani hari.",
-      badge: "Makanan & Minuman",
-      image: "/products/matcha-cream-sando.jpg",
-    },
-    {
-      id: 3,
       name: "Sando Crab Stick",
       category: "Single",
       price: "Rp 15.000",
@@ -32,7 +15,7 @@ export default function Product() {
       image: "/crab.jpeg", // Diubah dari /public/crab.jpg menjadi /crab.jpg (pastikan file crab.jpg ada di dalam folder public)
     },
     {
-      id: 4,
+      id: 2,
       name: "Sando Egg",
       category: "Single",
       price: "Rp 12.500",
@@ -41,7 +24,7 @@ export default function Product() {
       image: "/egg.jpeg", // Diubah dari /public/egg.jpg menjadi /egg.jpg
     },
     {
-      id: 5,
+      id: 3,
       name: "Sando Beef",
       category: "Single",
       price: "Rp 12.500",
@@ -50,7 +33,7 @@ export default function Product() {
       image: "/crab.jpeg", // Sesuaikan dengan nama file gambar beef kamu nanti (misal: /beef.jpg)
     },
     {
-      id: 6,
+      id: 4,
       name: "Infused Water",
       category: "Single",
       price: "Rp 5.000",
