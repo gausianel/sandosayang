@@ -57,7 +57,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/#home" onClick={handleBerandaClick} className="flex items-center">
           <Image 
-            src="/Logo Sando Sayang.jpg" 
+            src="/sandosayanglogo.png" 
             alt="Sando Sayang Logo" 
             width={185} 
             height={185} 
